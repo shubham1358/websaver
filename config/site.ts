@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Web Saver",
-  description: "Jusr Save websites.",
+  description: "Just Save websites.",
   navItems: [],
   navMenuItems: [
     {
@@ -39,7 +39,8 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/shubham1358",
+    github: "https://github.com/shubham1358/websaver",
     login: "/login",
+    add: "/add",
   },
 };

@@ -1,25 +1,68 @@
 import * as React from "react";
 
 import { IconSvgProps } from "@/types";
-
 export const Logo: React.FC<IconSvgProps> = ({
-  size = 36,
+  size = 24,
   width,
   height,
   ...props
 }) => (
   <svg
+    xmlns="http://www.w3.org/2000/svg"
     fill="none"
     height={size || height}
-    viewBox="0 0 32 32"
+    viewBox="0 0 24 24"
     width={size || width}
     {...props}
   >
+    <circle
+      cx="12"
+      cy="12"
+      r="10.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      opacity="0.8"
+    />
     <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
+      d="M8.25 12a3.75 3.75 0 0 1 3.75-3.75h3.75v1.5h-3.75a2.25 2.25 0 0 0 0 4.5h3.75v1.5h-3.75A3.75 3.75 0 0 1 8.25 12z"
       fill="currentColor"
-      fillRule="evenodd"
+      opacity="0.9"
+    />
+    <line
+      x1="12"
+      y1="1.5"
+      x2="12"
+      y2="4.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      opacity="0.7"
+    />
+    <line
+      x1="12"
+      y1="19.5"
+      x2="12"
+      y2="22.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      opacity="0.7"
+    />
+    <line
+      x1="1.5"
+      y1="12"
+      x2="4.5"
+      y2="12"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      opacity="0.7"
+    />
+    <line
+      x1="19.5"
+      y1="12"
+      x2="22.5"
+      y2="12"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      opacity="0.7"
     />
   </svg>
 );

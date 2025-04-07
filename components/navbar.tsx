@@ -8,24 +8,19 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
-import { link as linkStyles } from "@heroui/theme";
 import NextLink from "next/link";
-import clsx from "clsx";
+
+import { SearchInput } from "./SearchInput";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
-  TwitterIcon,
   GithubIcon,
-  DiscordIcon,
   HeartFilledIcon,
-  SearchIcon,
   Logo,
+  SunFilledIcon,
 } from "@/components/icons";
-import { SearchInput } from "./SearchInput";
 
 export const Navbar = () => {
   return (
@@ -34,11 +29,11 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">Web Saver</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {/* {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
@@ -51,7 +46,7 @@ export const Navbar = () => {
                 {item.label}
               </NextLink>
             </NavbarItem>
-          ))}
+          ))} */}
         </ul>
       </NavbarContent>
 
@@ -70,7 +65,6 @@ export const Navbar = () => {
         </NavbarItem> */}
         <NavbarItem className="hidden md:flex">
           <Button
-            isExternal
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
             href={siteConfig.links.login}
@@ -78,6 +72,17 @@ export const Navbar = () => {
             variant="flat"
           >
             Login
+          </Button>
+        </NavbarItem>
+        <NavbarItem className="hidden md:flex">
+          <Button
+            as={Link}
+            className="text-sm font-normal text-default-600 bg-default-100"
+            href={siteConfig.links.add}
+            startContent={<SunFilledIcon className="text-amber-500" />}
+            variant="flat"
+          >
+            Add
           </Button>
         </NavbarItem>
       </NavbarContent>

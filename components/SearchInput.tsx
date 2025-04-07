@@ -3,12 +3,15 @@
 import React, { useState } from "react";
 import { Button } from "@heroui/button";
 import { Input, Kbd } from "@heroui/react";
-import { SearchIcon } from "./icons";
 import { Link } from "@heroui/link";
 import { Icon } from "@iconify/react";
 
-export const SearchInput = () => {
-  const [count, setCount] = useState(0);
+import { SearchIcon } from "./icons";
+
+export const SearchInput: React.FC<{
+  placeholder?: string;
+  action?: (value: string) => any;
+}> = ({ placeholder, action }) => {
 
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -39,7 +42,7 @@ export const SearchInput = () => {
           </Kbd>
         }
         labelPlacement="outside"
-        placeholder="Search..."
+        placeholder={placeholder ?? "Search..."}
         startContent={
           <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
         }
@@ -51,6 +54,9 @@ export const SearchInput = () => {
         aria-label="Take a photo"
         color="secondary"
         variant="flat"
+        onPress={() => {
+          action?.(document.getElementById("search-input")?.nodeValue ?? "");
+        }}
       >
         <Icon icon="fluent:triangle-right-48-filled" />
       </Button>

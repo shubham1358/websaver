@@ -1,15 +1,17 @@
 "use client";
 
 import type { ThemeProviderProps } from "next-themes";
+import type { AppStore } from "@/lib/store";
+
 import * as React from "react";
 import { HeroUIProvider } from "@heroui/system";
 import { useRouter } from "next/navigation";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { AppStore } from "@/lib/store";
-import { makeStore } from "@/lib/store";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useEffect, useRef } from "react";
 import { Provider } from "react-redux";
+
+import { makeStore } from "@/lib/store";
 export interface ProvidersProps {
   children: React.ReactNode;
   themeProps?: ThemeProviderProps;
@@ -37,9 +39,11 @@ export function Providers({ children, themeProps }: ProvidersProps) {
       // configure listeners using the provided defaults
       // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
       const unsubscribe = setupListeners(storeRef.current.dispatch);
+
       return unsubscribe;
     }
   }, []);
+
   return (
     <Provider store={storeRef.current}>
       <HeroUIProvider navigate={router.push}>
