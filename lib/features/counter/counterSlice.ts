@@ -1,7 +1,9 @@
-import { createAppSlice } from "@/lib/createAppSlice";
 import type { AppThunk } from "@/lib/store";
 import type { PayloadAction } from "@reduxjs/toolkit";
+
 import { fetchCount } from "./counterAPI";
+
+import { createAppSlice } from "@/lib/createAppSlice";
 
 export interface CounterSliceState {
   value: number;
@@ -44,6 +46,7 @@ export const counterSlice = createAppSlice({
     incrementAsync: create.asyncThunk(
       async (amount: number) => {
         const response = await fetchCount(amount);
+
         // The value we return becomes the `fulfilled` action payload
         return response.data;
       },

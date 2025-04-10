@@ -13,7 +13,7 @@ const rootReducer = combineSlices(
   counterSlice,
   quotesApiSlice,
   searchsApiSlice,
-  monthListApiSlice
+  monthListApiSlice,
 );
 
 // Infer the `RootState` type from the root reducer

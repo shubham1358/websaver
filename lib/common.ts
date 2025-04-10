@@ -6,5 +6,6 @@ export const getBaseQuery = (path = "") => {
   if (!API_SERVER) {
     throw new Error("API_SERVER is not defined in the environment variables.");
   }
+
   return fetchBaseQuery({ baseUrl: `${API_SERVER}/${path}` });
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 import { Calendar, DateValue } from "@heroui/calendar";
 import { parseDate } from "@internationalized/date";
 import { useRouter } from "next/navigation"; // Import useRouter
@@ -10,7 +10,7 @@ import { Spinner } from "@heroui/react";
 import { useGetMonthListQuery } from "@/lib/features/search/monthApiSlice";
 import { useGetPageQuery } from "@/lib/features/search/searchApiSlice";
 
-const Page = () => {
+const PageContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter(); // Initialize useRouter
 
@@ -18,7 +18,7 @@ const Page = () => {
   const date = searchParams.get("date");
 
   const [selectedDate, setSelectedDate] = useState<DateValue>(
-    parseDate(date ?? new Date().toISOString().split("T")[0])
+    parseDate(date ?? new Date().toISOString().split("T")[0]),
   );
   const { data: monthData, isLoading: isMonthLoading } = useGetMonthListQuery({
     url: url || "",
@@ -80,6 +80,20 @@ const Page = () => {
         )}
       </div>
     </div>
+  );
+};
+
+const Page = () => {
+  return (
+    <Suspense
+      fallback={
+        <div>
+          <Spinner />
+        </div>
+      }
+    >
+      <PageContent />
+    </Suspense>
   );
 };
 
