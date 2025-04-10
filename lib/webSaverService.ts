@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from "axios";
 
-const API_SERVER = process.env.API_SERVER;
+const API_SERVER = process.env.NEXT_PUBLIC_API_SERVER;
 
 if (!API_SERVER) {
   throw new Error("API_SERVER is not defined in the environment variables.");

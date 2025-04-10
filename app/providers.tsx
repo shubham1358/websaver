@@ -10,6 +10,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useEffect, useRef } from "react";
 import { Provider } from "react-redux";
+import { ToastProvider } from "@heroui/react";
 
 import { makeStore } from "@/lib/store";
 export interface ProvidersProps {
@@ -47,6 +48,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <Provider store={storeRef.current}>
       <HeroUIProvider navigate={router.push}>
+        <ToastProvider placement="top-center" toastOffset={60} />
         <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
       </HeroUIProvider>
     </Provider>

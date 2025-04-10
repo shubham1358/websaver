@@ -16,10 +16,20 @@ export default function Component() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="flex w-full max-w-sm flex-col gap-4 rounded-large bg-content1 px-8 pb-10 pt-6 shadow-small">
+      {/* Watermark */}
+      <div className="absolute flex items-center justify-center pointer-events-none">
+        <p
+          className="text-6xl font-bold text-gray-300 opacity-20"
+          style={{ zIndex: 1000 }}
+        >
+          Under Construction
+        </p>
+      </div>
+
+      <div className="blur-[1.5px] flex w-full max-w-sm flex-col gap-4 rounded-large bg-content1 px-8 pb-10 pt-6 shadow-small">
         <div className="flex flex-col gap-1">
           <h1 className="text-large font-medium">Sign in to your account</h1>
-          <p className="text-small text-default-500">to continue to Acme</p>
+          <p className="text-small text-default-500">to continue to Websaver</p>
         </div>
 
         <Form
